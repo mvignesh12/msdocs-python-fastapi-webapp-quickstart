@@ -15,6 +15,7 @@ env:
   STARTUP_COMMAND: 'gunicorn -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app'
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
