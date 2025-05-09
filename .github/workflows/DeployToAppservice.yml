@@ -83,6 +83,6 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{
             "text": "🚀 Build completed successfully!"
-          }' "$SLACK_WEBHOOK_URL"
+          }' ${{ secrets.SLACK_WEBHOOK_URL }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
