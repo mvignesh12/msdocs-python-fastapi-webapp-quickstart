@@ -50,10 +50,14 @@ jobs:
 
       # Optional: Add a step to run tests here (PyTest, Django test suites, etc.)
 
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
-          name: python-app-${{ github.run_id }}-$(date +"%Y%m%d-%H%M%S")
+          name: python-app-${{ github.run_id }}-${{ steps.date.outputs.date }}
           path: |
             .
             !venv/
