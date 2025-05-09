@@ -7,6 +7,11 @@ env:
 
 on:
   workflow_dispatch:
+    inputs:
+      artifact_id:
+        description: "Artifact ID to process"
+        required: true
+        type: string
   push:
     branches:
       - main
@@ -23,7 +28,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: python-app
+          name: ${{ inputs.artifact_id }}
           path: .
 
       - name: 'Deploy to Azure Web App'
