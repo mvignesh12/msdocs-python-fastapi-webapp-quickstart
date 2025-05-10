@@ -35,7 +35,7 @@ jobs:
           path: .
           github-token: ${{ secrets.GH_PAT_WORKFLOW_ACCESS }} # token with actions:read permissions on target repo
           repository: ${{ github.repository }}
-          run-id: ${{ steps.build-run-id.BUILD_RUN_ID }}
+          run-id: $BUILD_RUN_ID
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
