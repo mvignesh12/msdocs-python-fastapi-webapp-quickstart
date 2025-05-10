@@ -26,7 +26,9 @@ jobs:
         run: |
           STRING="${{ inputs.artifact_id }}"
           BUILD_RUN_ID=$(echo $STRING | cut -d'-' -f3)
-          echo "Run ID: $BUILD_RUN_ID"
+          echo "BUILD_RUN_ID ID: $BUILD_RUN_ID"
+          echo "BUILD_RUN_ID=$BUILD_RUN_ID" >> $GITHUB_ENV
+          echo "BUILD_RUN_ID=$BUILD_RUN_ID" >> $GITHUB_OUTPUT
 
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
@@ -35,7 +37,7 @@ jobs:
           path: .
           github-token: ${{ secrets.GH_PAT_WORKFLOW_ACCESS }} # token with actions:read permissions on target repo
           repository: ${{ github.repository }}
-          run-id: $BUILD_RUN_ID
+          run-id: ${{ steps.build-run-id.outputs.BUILD_RUN_ID }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
