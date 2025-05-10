@@ -24,11 +24,20 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Extract CI Run ID from build artifact
+        run: |
+          STRING="${{ inputs.artifact_id }}"
+          BUILD_RUN_ID=$(echo $STRING | cut -d'-' -f3)
+          echo "Run ID: $BUILD_RUN_ID"
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifact_id }}
           path: .
+          github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+          repository: ${{ github.repository }}
+          run-id: ${{ BUILD_RUN_ID }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp

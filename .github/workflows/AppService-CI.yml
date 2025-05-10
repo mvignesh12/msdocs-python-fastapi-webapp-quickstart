@@ -10,6 +10,7 @@
 name: Build Python app for Azure Web App
 
 env:
+  RUN_ID: ${{ github.run_id }}
   AZURE_WEBAPP_NAME: vignesh-demo   # set this to your application's name
   PYTHON_VERSION: '3.9'               # set this to the Python version to use
   STARTUP_COMMAND: 'gunicorn -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app'
@@ -56,8 +57,9 @@ jobs:
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
+        id: upload-artifact-ci
         with:
-          name: python-app-${{ github.run_id }}-${{ steps.date.outputs.date }}
+          name: python-app-$RUN_ID-${{ steps.date.outputs.date }}
           path: |
             .
             !venv/
