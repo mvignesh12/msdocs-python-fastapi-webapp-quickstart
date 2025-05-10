@@ -36,7 +36,7 @@ jobs:
         with:
           name: ${{ inputs.artifact_id }}
           path: .
-          github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+          github-token: ${{ secrets.GH_PAT_WORKFLOW_ACCESS }} # token with actions:read permissions on target repo
           repository: ${{ github.repository }}
           run-id: ${{ steps.build-run-id.BUILD_RUN_ID }}
 
