@@ -12,9 +12,6 @@ on:
         description: "Artifact ID to process"
         required: true
         type: string
-  push:
-    branches:
-      - main
 
 jobs:
   deploy:
