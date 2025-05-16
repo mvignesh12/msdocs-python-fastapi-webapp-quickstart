@@ -1,4 +1,4 @@
-name: Deploy Python app to Azure Web App
+name: Deploy Pipeline
 
 env:
   AZURE_WEBAPP_NAME: vignesh-demo   # set this to your application's name
