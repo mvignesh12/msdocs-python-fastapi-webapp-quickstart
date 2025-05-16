@@ -1,3 +1,4 @@
+[![Build Pipeline](https://github.com/mvignesh12/msdocs-python-fastapi-webapp-quickstart/actions/workflows/AppService-CI.yml/badge.svg)](https://github.com/mvignesh12/msdocs-python-fastapi-webapp-quickstart/actions/workflows/AppService-CI.yml) [![Deploy Pipeline](https://github.com/mvignesh12/msdocs-python-fastapi-webapp-quickstart/actions/workflows/AppService-CD.yml/badge.svg)](https://github.com/mvignesh12/msdocs-python-fastapi-webapp-quickstart/actions/workflows/AppService-CD.yml)
 ---
 page_type: sample
 description: "A minimal sample app that can be used to demonstrate deploying FastAPI apps to Azure App Service."
