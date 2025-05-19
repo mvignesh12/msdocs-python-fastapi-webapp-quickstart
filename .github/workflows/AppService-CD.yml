@@ -50,7 +50,8 @@ jobs:
       - name: Send Notification to Slack
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{
-            "text": "🚀 Deployment completed successfully!"
+            "text": "🚀 Deployment completed successfully with Artifact ID: ${{ env.ARTIFACT_ID }}"
           }' ${{ secrets.SLACK_WEBHOOK_URL }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          ARTIFACT_ID: ${{ inputs.artifact_id }}
